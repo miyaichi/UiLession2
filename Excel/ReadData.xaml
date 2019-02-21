@@ -1,16 +1,19 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="ReadData"
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="ReadData" this:ReadData.File="Data\TravelCosts.xlsx" this:ReadData.Sheet="Sheet1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
  xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:this="clr-namespace:"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="File" Type="InArgument(x:String)" />
     <x:Property Name="DataTable" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="Sheet" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -67,9 +70,25 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="交通費データをExcelから読み込みます。" DisplayName="ReadData" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Text" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="Sheets" />
+      <Variable x:TypeArguments="sd:DataTable" Name="SheetData" />
+    </Sequence.Variables>
+    <sads:DebugSymbol.Symbol>d0tDOlxVc2Vyc1xZb3NoaWhpa28gTWl5YWljaGlcRG9jdW1lbnRzXFVpUGF0aFxVaUxlc3Npb24yXEV4Y2VsXFJlYWREYXRhLnhhbWwDAVEBZwEDAX0BhAEBAkkDUA4CAQE=</sads:DebugSymbol.Symbol>
+  </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="ReadData_1" sap:VirtualizedContainerService.HintSize="440,440" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,144">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadData_1" sap:VirtualizedContainerService.HintSize="240,224" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
